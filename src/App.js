@@ -1,14 +1,15 @@
+import './styles/root.scss';
 import React, { useState } from 'react';
 import Board from './components/Board';
 import History from './components/History';
 import StatusMessage from './components/StatusMessage';
 import { calculateWinner } from './helpers';
-
-import './styles/root.scss';
+import { Switch, Route } from 'react-router-dom';
+import Landing from './components/Landing';
 
 const NEW_GAME = [{ board: Array(9).fill(null), isXNext: true }];
 
-const App = () => {
+const App = (props) => {
   const [history, setHistory] = useState(NEW_GAME);
   const [currentMove, setCurrentMove] = useState(0);
   const current = history[currentMove];
@@ -46,21 +47,45 @@ const App = () => {
     setCurrentMove(0);
   };
 
-  return (
-    <div className="app">
-      <h1>TIC TAC TOE</h1>
-      <StatusMessage winner={winner} current={current} />
-      <Board
-        board={current.board}
-        handleSquareClick={handleSquareClick}
-        winningSquares={winningSquares}
-      />
-      <button type="button" onClick={onNewGame}>
-        Start new game
-      </button>
-      <History history={history} moveTo={moveTo} currentMove={currentMove} />
-    </div>
-  );
+  return <Switch>
+
+
+    <Route exact path="/">
+
+      <Landing />
+
+
+    </Route>
+
+
+    <Route exact path="/game">
+      <div className="app">
+        <h1>
+          <span className="text-green">XARAB</span>  <span className="text-orange">ZERO</span>
+        </h1>
+
+        <StatusMessage winner={winner} current={current} />
+        <Board
+          board={current.board}
+          handleSquareClick={handleSquareClick}
+          winningSquares={winningSquares}
+        />
+        <button
+          type="button"
+          onClick={onNewGame}
+          className={`btn-reset ${winner ? 'active' : ''}`}
+        >
+          Start new game
+    </button>
+        <h2 style={{ fontWeight: 'normal' }}>Current game history</h2>
+        <History history={history} moveTo={moveTo} currentMove={currentMove} />
+        <div className="bg-balls" />
+      </div>
+    </Route>
+
+    <Route>ERROR 404 NOT FOUND</Route>
+
+  </Switch >
 };
 
 export default App;
