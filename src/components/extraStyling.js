@@ -1,6 +1,6 @@
 
-export const paperStyle = ({ padding: 20, height: '70vh', width: 250, margin: "100px auto " });
+export const paperStyle = ({ opacity: 0.7, padding: 20, height: '70vh', width: 250, margin: "100px auto ", backgroundColor: 'lightBlue' });
 
 export const avatarStyle = ({ backgroundColor: '#1bbd7e' });
 
-export const bStyle = ({ marginTop: "40px" });
+export const bStyle = ({ backgroundColor: '#4c43d4', marginTop: "50px", borderRadius: " 8px" });

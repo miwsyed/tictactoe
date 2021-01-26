@@ -2,8 +2,18 @@ $green: #12e177;
 $orange: #ffc72a;
 $blue: #4c43d4;
 
+.Landing{
+  background-image: url('gameCover.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  
+  
+
+}
+
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
   background-color: $blue;
   color: #fff;
   padding: 0;
@@ -169,8 +179,4 @@ button {
       left: -110px;
     }
   }
-}
-
-.MuiFormHelperText-root{
-  color : #f44336 !important; ;
 }

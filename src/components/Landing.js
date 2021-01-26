@@ -13,7 +13,9 @@ const Landing = ({ players, setPlayers }) => {
 
   const history = useHistory();
 
+
   const onSubmit = (values, props) => {
+
     props.setSubmitting(false);
     console.log(values.player1);
     setPlayers({ player1: values.player1, player2: values.player2 });
@@ -24,27 +26,27 @@ const Landing = ({ players, setPlayers }) => {
 
   return (
 
-    <Grid>
-      <Paper elevation={10} style={paperStyle}>
-        <Grid align='center'>
-          <Avatar style={avatarStyle}> <Icon /> </Avatar>
-          <h3 >Add Players</h3>
-        </Grid>
-        <Formik initialValues={players} onSubmit={onSubmit} validationSchema={validationSchema}  >
-          {(props) => (
+    <div className="Landing">
+      <Grid >
 
-            <Form>
-              <Field as={TextField} name="player1" label="player1" placeholder='ramesh ' fullWidth helperText={<ErrorMessage name="player1" />} />
-              <Field as={TextField} name="player2" label="player2" placeholder='suresh ' fullWidth helperText={<ErrorMessage name="player1" />} />
-              <Button type="submit" style={bStyle} color="primary" fullWidth variant="contained"> {props.isSubmitting ? "Loading" : "Start"}  </Button>
+        <Paper elevation={10} style={paperStyle}>
+          <Grid align='center'>
+            <Avatar style={avatarStyle}> <Icon /> </Avatar>
+            <h3 >Add Players</h3>
+          </Grid>
+          <Formik initialValues={players} onSubmit={onSubmit} validationSchema={validationSchema}  >
+            {(props) => (
+              <Form>
+                <Field as={TextField} name="player1" label="player1" placeholder='ramesh ' fullWidth helperText={<ErrorMessage name="player1" />} />
+                <Field as={TextField} name="player2" label="player2" placeholder='suresh ' fullWidth helperText={<ErrorMessage name="player1" />} />
+                <Button type="submit" style={bStyle} color="primary" fullWidth variant="contained"> {props.isSubmitting ? "Loading" : "Start"}  </Button>
+              </Form>
+            )}
+          </Formik>
+        </Paper>
+      </Grid >
+    </div>
 
-            </Form>
-
-          )}
-
-        </Formik>
-      </Paper>
-    </Grid >
 
 
   );

@@ -1,7 +1,9 @@
 import React from 'react';
 
-const StatusMessage = ({ winner, current }) => {
+const StatusMessage = ({ winner, current, players }) => {
   const noMovesLeft = current.board.every(el => el !== null);
+  const { player1, player2 } = players;
+
 
   return (
     <div className="status-message">
@@ -9,7 +11,7 @@ const StatusMessage = ({ winner, current }) => {
         <>
           Winner is{' '}
           <span className={winner === 'X' ? 'text-green' : 'text-orange'}>
-            {winner}
+            {winner === 'X' ? `${player1}` : `${player2}`}
           </span>
         </>
       )}
@@ -17,14 +19,14 @@ const StatusMessage = ({ winner, current }) => {
         <>
           Next player is{' '}
           <span className={current.isXNext ? 'text-green' : 'text-orange'}>
-            {current.isXNext ? 'X' : 'O'}{' '}
+            {current.isXNext ? `${player1}` : `${player2}`}{' '}
           </span>
         </>
       )}
       {!winner && noMovesLeft && (
         <>
-          <span className="text-green">X</span> and{' '}
-          <span className="text-orange">O</span> tied
+          <span className="text-green">{player1}</span> and{' '}
+          <span className="text-orange">{player2}</span> tied
         </>
       )}
     </div>

@@ -57,7 +57,7 @@ const Game = ({ players, setPlayers }) => {
         <span className="text-green">XARAB</span>  <span className="text-orange">ZERO</span>
       </h1>
 
-      <StatusMessage winner={winner} current={current} />
+      <StatusMessage winner={winner} current={current} players={players} />
       <Board
         board={current.board}
         handleSquareClick={handleSquareClick}
