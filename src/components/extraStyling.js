@@ -1,5 +1,5 @@
 
-export const paperStyle = ({ opacity: 0.7, padding: 20, height: '70vh', width: 250, margin: "100px auto ", backgroundColor: 'lightBlue' });
+export const paperStyle = ({ opacity: 0.6, padding: 20, height: '70vh', width: 250, margin: "100px auto ", backgroundColor: 'lightBlue' });
 
 export const avatarStyle = ({ backgroundColor: '#1bbd7e' });
 

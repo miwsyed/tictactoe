@@ -3,7 +3,7 @@ import Icon from '@material-ui/icons/PeopleAlt';
 import { Form, Formik, Field, ErrorMessage } from 'formik';
 import React, { PropTypes } from 'react';
 import { notify, notify2 } from './iziNotify.js'
-import { bStyle, paperStyle, avatarStyle } from './extraStyling.js'
+import { bStyle, paperStyle, avatarStyle, gridStyle } from './extraStyling.js'
 import { useHistory } from "react-router-dom";
 import { validationSchema } from './Validation.js';
 
@@ -27,8 +27,7 @@ const Landing = ({ players, setPlayers }) => {
   return (
 
     <div className="Landing">
-      <Grid >
-
+      <Grid style={gridStyle}>
         <Paper elevation={10} style={paperStyle}>
           <Grid align='center'>
             <Avatar style={avatarStyle}> <Icon /> </Avatar>
