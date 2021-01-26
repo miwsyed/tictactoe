@@ -7,8 +7,9 @@ export const notify = () => iziToast.success({
 
 });
 
-export const notify2 = () => iziToast.info({
-  message: 'redirecting you to game',
-  position: 'bottomRight'
+export const notify2 = () => iziToast.error({
+  title: 'Error',
+  message: 'Player names should be unique.',
+  position: 'topRight'
 
 });

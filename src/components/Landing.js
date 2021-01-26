@@ -6,6 +6,7 @@ import { notify, notify2 } from './iziNotify.js'
 import { bStyle, paperStyle, avatarStyle, gridStyle } from './extraStyling.js'
 import { useHistory } from "react-router-dom";
 import { validationSchema } from './Validation.js';
+import { green } from '@material-ui/core/colors';
 
 
 
@@ -17,9 +18,15 @@ const Landing = ({ players, setPlayers }) => {
   const onSubmit = (values, props) => {
 
     props.setSubmitting(false);
-    console.log(values.player1);
-    setPlayers({ player1: values.player1, player2: values.player2 });
-    history.push('/game');
+    if (values.player1 !== values.player2) {
+      setPlayers({ player1: values.player1, player2: values.player2 });
+      history.push('/game');
+    }
+    else {
+      { notify2(); }
+      history.push('/');
+    }
+
   }
 
 
@@ -31,20 +38,21 @@ const Landing = ({ players, setPlayers }) => {
         <Paper elevation={10} style={paperStyle}>
           <Grid align='center'>
             <Avatar style={avatarStyle}> <Icon /> </Avatar>
+            <h2><span style={{ color: 'green' }}>XARAB</span> <span style={{ color: 'orange' }}>XERO</span></h2>
             <h3 >Add Players</h3>
           </Grid>
-          <Formik initialValues={players} onSubmit={onSubmit} validationSchema={validationSchema}  >
+          <Formik style initialValues={players} onSubmit={onSubmit} validationSchema={validationSchema}  >
             {(props) => (
               <Form>
                 <Field as={TextField} name="player1" label="player1" placeholder='ramesh ' fullWidth helperText={<ErrorMessage name="player1" />} />
                 <Field as={TextField} name="player2" label="player2" placeholder='suresh ' fullWidth helperText={<ErrorMessage name="player1" />} />
-                <Button type="submit" style={bStyle} color="primary" fullWidth variant="contained"> {props.isSubmitting ? "Loading" : "Start"}  </Button>
+                <Button className="ghost-round" type="submit" style={bStyle} color="primary" fullWidth variant="contained"> {props.isSubmitting ? "Loading" : "Start"}  </Button>
               </Form>
             )}
           </Formik>
         </Paper>
       </Grid >
-    </div>
+    </div >
 
 
 
